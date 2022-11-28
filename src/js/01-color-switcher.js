@@ -1,0 +1,22 @@
+
+const startBtn = document.querySelector("[data-start]");
+const stopBtn = document.querySelector("[data-stop]");
+const body = document.querySelector("body");
+let  changeСolor = null;
+
+function changeToRandomHexColor() {
+const newColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+
+ body.style.background = newColor;
+return newColor
+}
+
+startBtn.addEventListener("click", () => {
+   startBtn.disabled = true;
+  changeСolor = setInterval(changeToRandomHexColor, 1000);
+});
+
+stopBtn.addEventListener("click", () => {
+     startBtn.disabled = false;
+  clearInterval(changeСolor);
+});
