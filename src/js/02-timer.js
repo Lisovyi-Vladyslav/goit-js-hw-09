@@ -85,10 +85,11 @@ function updateClockface({ days, hours, minutes, seconds }) {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose(selectedDates) {
-    console.log(selectedDates[0]);
+   onClose(selectedDates) {
+    
+    // console.log(selectedDates[0]);
     timerDeadline = selectedDates[0].getTime();
-    console.log(timerDeadline);
+    // console.log(timerDeadline);
     if (timerDeadline < Date.now()) {
         window.alert('Please choose a date in the future'); 
     } else {
