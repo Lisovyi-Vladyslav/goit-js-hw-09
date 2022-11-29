@@ -13,8 +13,17 @@ const refs = {
     timeSeconds: document.querySelector('[data-seconds]'),
   
 };
-
+let timerDeadline = 0;
 refs.startBtn.disabled = true;
+
+// подія початок
+refs.startBtn.addEventListener('click', startTimer);
+
+// функція для початку
+function startTimer() {
+    timer.start();
+}
+
 
 const timer = {
   intervalId: null,
@@ -63,13 +72,6 @@ const timer = {
   function pad(value) {
     return String(value).padStart(2, '0');
   }
-// подія початок
-refs.startBtn.addEventListener('click', startTimer);
-
-// функція для початку
-function startTimer() {
-    timer.start();
-}
 
 // оновлення інтерфейсу
 function updateClockface({ days, hours, minutes, seconds }) {
@@ -88,7 +90,7 @@ function updateClockface({ days, hours, minutes, seconds }) {
    onClose(selectedDates) {
     
     // console.log(selectedDates[0]);
-    const timerDeadline = selectedDates[0].getTime();
+    timerDeadline = selectedDates[0].getTime();
     // console.log(timerDeadline);
     if (timerDeadline < Date.now()) {
         window.alert('Please choose a date in the future'); 
