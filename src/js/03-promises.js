@@ -26,19 +26,13 @@ event.preventDefault();
   const stepValue = Number(step.value);
   const amountValue = Number(amount.value);
   let delays = delayValue;
-  let position = 0;
   
   
-  const timerId = setInterval(() => {
-    console.log(delays);
+  for (let position = 1; position < amountValue; position++) {
     
-    position += 1;
-
-    if (position === amountValue + 1) {
-     clearInterval(timerId);
-      return;
-       }
-     
+     const timerId = setTimeout(() => {
+       console.log(delays);
+       
       createPromise(position, delays)
         .then(({ position, delays }) => {
           Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delays}ms`, { position: 'center-center' });
@@ -50,6 +44,8 @@ event.preventDefault();
     delays += stepValue;
     
   }, stepValue); 
+  }
+ 
 });
 
 
